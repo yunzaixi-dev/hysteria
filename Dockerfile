@@ -36,4 +36,8 @@ RUN set -ex \
 
 COPY --from=builder /go/bin/hysteria /usr/local/bin/hysteria
 
-ENTRYPOINT ["hysteria"]
+# Expose ports for UDP and TCP
+EXPOSE 5678/udp
+EXPOSE 5678/tcp
+
+ENTRYPOINT ["hysteria", "server"]
